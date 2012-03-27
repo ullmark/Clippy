@@ -1,0 +1,9 @@
+*.suo
+*.user
+*.cache
+bin
+obj
+_ReSharper.Clippy
+_ReSharper.Clippy.Test
+packages
+*.orig

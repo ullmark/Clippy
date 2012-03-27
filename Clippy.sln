@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clippy", "Clippy\Clippy.csproj", "{2970F1A9-10EE-41F8-86A5-64B6F5EFF346}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clippy.Test", ""Clippy.Test\Clippy.Test.csproj", "{56EF5CD9-27B0-40D2-BFA0-5AC4967DAD39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2970F1A9-10EE-41F8-86A5-64B6F5EFF346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2970F1A9-10EE-41F8-86A5-64B6F5EFF346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2970F1A9-10EE-41F8-86A5-64B6F5EFF346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2970F1A9-10EE-41F8-86A5-64B6F5EFF346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56EF5CD9-27B0-40D2-BFA0-5AC4967DAD39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56EF5CD9-27B0-40D2-BFA0-5AC4967DAD39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56EF5CD9-27B0-40D2-BFA0-5AC4967DAD39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56EF5CD9-27B0-40D2-BFA0-5AC4967DAD39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
