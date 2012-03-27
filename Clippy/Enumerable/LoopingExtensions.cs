@@ -26,12 +26,18 @@ namespace Clippy
         }
 
         /// <summary>
-        /// Runs the provided action the value of amount times
+        /// Runs the action the provided amount of times
         /// </summary>
         /// <param name="amount"></param>
         /// <param name="action"></param>
         public static void Times(this int amount, Action<int> action)
         {
+            if (amount < 0)
+                throw new ArgumentException("What ARE you doing? Can't run the action a negative amount of times");
+
+            if (action == null)
+                throw new ArgumentNullException("action");
+
             for (var i = 0; i < amount; i++)
                 action(i);
         }
