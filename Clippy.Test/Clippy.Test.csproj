@@ -57,6 +57,7 @@
     <Compile Include="Core\StringExtensions\ToFirstUpper.cs" />
     <Compile Include="Enumerable\LoopingExtensions\Each.cs" />
     <Compile Include="Enumerable\LoopingExtensions\Times.cs" />
+    <Compile Include="Enumerable\ValueExtensions\IsNotNullAndHaveItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
