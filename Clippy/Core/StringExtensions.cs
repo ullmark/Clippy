@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Globalization;
 
 /// <summary>
 /// Extension methods for the string data type
 /// </summary>
 public static class StringExtensions
 {
+	private static readonly Regex segmentRegex = new Regex(@"[^A-Za-z0-9\-_~]{1}");
+	private static readonly Regex dashRegex = new Regex(@"[\-\-]+");
+	private static readonly Regex spaceRegex = new Regex(@"\s+");
+
     /// <summary>
     /// Extension method for html decoding a string
     /// </summary>
@@ -100,4 +105,42 @@ public static class StringExtensions
         Regex rx = new Regex(@"http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?");
         return rx.IsMatch(s);
     }
+
+	/// <summary>
+	/// It looks like you are trying to create a slug.
+	/// </summary>
+	/// <param name="s"></param>
+	/// <returns></returns>
+	public static string ToSlug(this string s)
+	{
+		if (s == null)
+			return null;
+
+		s = s.Trim();
+		s = spaceRegex.Replace(s, "-")
+			.Replace("&", "-")
+			.Replace("/", "-")
+			.Replace(".", "-")
+			.Replace("$", "s")
+			.Replace("’", string.Empty)
+			.Replace("'", string.Empty);
+
+		string formD = s.Normalize(NormalizationForm.FormD);
+		StringBuilder sb = new StringBuilder();
+
+		for (int i = 0; i < formD.Length; i++)
+		{
+			UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(formD[i]);
+			if (uc != UnicodeCategory.NonSpacingMark)
+			{
+				sb.Append(formD[i]);
+			}
+		}
+
+		s = dashRegex.Replace(segmentRegex.Replace(sb.ToString(), string.Empty), "-");
+		if (s.EndsWith("-"))
+			s = s.Substring(0, s.Length - 1);
+
+		return s.ToLower();
+	}
 }
