@@ -12,7 +12,7 @@
     <AssemblyName>Clippy.Mvc</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-		<RestorePackages>true</RestorePackages>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,9 +54,15 @@
   <ItemGroup>
     <None Include="Clippy.Mvc.nuspec" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clippy\Clippy.csproj">
+      <Project>{2970F1A9-10EE-41F8-86A5-64B6F5EFF346}</Project>
+      <Name>Clippy</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-	<Import Project="$(SolutionDir)\.nuget\nuget.targets" />
-	<!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

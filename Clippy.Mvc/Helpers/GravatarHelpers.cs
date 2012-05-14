@@ -9,11 +9,21 @@ public static class GravatarHelpers
 {
 	private const string gravatar = "http://www.gravatar.com/avatar/";
 	
-	public static MvcHtmlString Gravatar(this HtmlHelper helper, string email, string fallback = null)
+	public static MvcHtmlString Gravatar(this HtmlHelper helper, string email, string fallback = null, int? size = null)
 	{
 		var img = new TagBuilder("img");
 		img.Attributes["alt"] = string.Empty;
-		img.Attributes["src"] = string.Concat(gravatar, ConstructGravatarUrl(email));
+		
+		var url = string.Concat(gravatar, ConstructGravatarUrl(email));
+		if (size.HasValue)
+		{
+			if (size.Value < 1 || size.Value > 512)
+				throw new ArgumentOutOfRangeException("size", "allowed values are 1 - 512");
+
+			url = url.AddQueryStringParameter("s", size.Value.ToString());
+		}
+
+		img.Attributes["src"] = url; 
 		return MvcHtmlString.Create(img.ToString(TagRenderMode.SelfClosing));
 	}
 

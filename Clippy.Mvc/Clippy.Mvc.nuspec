@@ -8,6 +8,7 @@
 		<description>$description$</description>
 		<language>en-US</language>
 		<dependencies>
+			<dependency id="Clippy" version="[$version$]" />
 		</dependencies>
 		<projectUrl>https://github.com/24hr/clippy</projectUrl>
 		<tags>Extensions</tags>
