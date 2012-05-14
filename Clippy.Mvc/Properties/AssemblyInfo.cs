@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Clippy")]
-[assembly: AssemblyDescription("Clippy contains a set of extensions to make you more productive")]
+[assembly: AssemblyTitle("Clippy.Mvc")]
+[assembly: AssemblyDescription("Extensions for ASP.NET MVC")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("24HR")]
-[assembly: AssemblyProduct("Clippy")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyProduct("Clippy.Mvc")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,4 +20,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2856ebe4-de94-4165-bcbc-0ea62c81e3bc")]
+[assembly: Guid("d174d92a-3619-473f-8858-8b5572cf1ad7")]

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package>
+	<metadata>
+		<id>$id$</id>
+		<title>Clippy.Mvc</title>
+		<version>$version$</version>
+		<authors>$author$</authors>
+		<description>$description$</description>
+		<language>en-US</language>
+		<dependencies>
+		</dependencies>
+		<projectUrl>https://github.com/24hr/clippy</projectUrl>
+		<tags>Extensions</tags>
+	</metadata>
+</package>

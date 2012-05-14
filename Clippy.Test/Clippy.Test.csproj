@@ -36,8 +36,13 @@
     <Reference Include="FluentAssertions">
       <HintPath>..\packages\FluentAssertions.1.7.1.1\Lib\net40\FluentAssertions.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,6 +64,8 @@
     <Compile Include="Enumerable\LoopingExtensions\Each.cs" />
     <Compile Include="Enumerable\LoopingExtensions\Times.cs" />
     <Compile Include="Enumerable\ValueExtensions\IsNotNullAndHaveItems.cs" />
+    <Compile Include="Mvc\Helpers\AHtmlHelperTest.cs" />
+    <Compile Include="Mvc\Helpers\GravatarHelpers\Gravatar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -66,6 +73,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Clippy.Mvc\Clippy.Mvc.csproj">
+      <Project>{CB964485-48D2-4EA8-9FE4-EA6A1C6155F2}</Project>
+      <Name>Clippy.Mvc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Clippy\Clippy.csproj">
       <Project>{2970F1A9-10EE-41F8-86A5-64B6F5EFF346}</Project>
       <Name>Clippy</Name>
