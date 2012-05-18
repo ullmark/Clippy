@@ -9,6 +9,9 @@
     <language>en-US</language>
     <dependencies>
     </dependencies>
+		<frameworkAssemblies>
+			<frameworkAssembly assemblyName="System.Runtime.Caching" />
+		</frameworkAssemblies>
     <projectUrl>https://github.com/24hr/clippy</projectUrl>
     <tags>Extensions</tags>
   </metadata>

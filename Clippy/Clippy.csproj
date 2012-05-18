@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +48,7 @@
     <Compile Include="..\AssemblyVersion.cs">
       <Link>AssemblyVersion.cs</Link>
     </Compile>
+    <Compile Include="Caching\MemoryCacheExtensions.cs" />
     <Compile Include="Enumerable\LoopingExtensions.cs" />
     <Compile Include="Enumerable\ValueExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
