@@ -54,6 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionResults\JsonOrJsonpResultTests.cs" />
     <Compile Include="Caching\MemoryCacheExtensions\Clear.cs" />
     <Compile Include="Core\StringExtensions\AddQueryStringParameter.cs" />
     <Compile Include="Core\StringExtensions\HtmlDecode.cs" />
