@@ -18,12 +18,11 @@ namespace Clippy.Test.ActionResults
 		private Mock<HttpRequestBase> request;
 		private Mock<HttpResponseBase> response;
 		private NameValueCollection param;
-		private StringBuilder content;
+		private string content;
 		private string contentType;
 
 		public JsonOrJsonpResultTests()
 		{
-			content = new StringBuilder();
 			param = new NameValueCollection();
 			controllerContext = new Mock<ControllerContext>();
 			request = new Mock<HttpRequestBase>();
@@ -31,7 +30,7 @@ namespace Clippy.Test.ActionResults
 
 			request.SetupGet(x => x.Params).Returns(param);
 			response.Setup(x => x.Write(It.IsAny<string>()))
-				.Callback((string s) => content.Append(s));
+				.Callback((string s) => content = s);
 
 			response.SetupSet(x => x.ContentType = It.IsAny<string>()).Callback((string s) => contentType = s);
 
@@ -45,7 +44,7 @@ namespace Clippy.Test.ActionResults
 			var result = new JsonOrJsonpResult { Data = new { foo = "bar" } };
 			result.ExecuteResult(controllerContext.Object);
 
-			content.ToString().Should().Be(
+			content.Should().Be(
 				@"{""foo"":""bar""}");
 
 			contentType.Should().Be("application/json");
@@ -58,10 +57,31 @@ namespace Clippy.Test.ActionResults
 			var result = new JsonOrJsonpResult { Data = new { foo = "bar" } };
 			result.ExecuteResult(controllerContext.Object);
 			
-			content.ToString().Should().Be(
+			content.Should().Be(
 				@"func({""foo"":""bar""});");
 
 			contentType.Should().Be("application/javascript");
+		}
+
+		[Fact]
+		public void It_accepts_changes_in_the_serialization_settings()
+		{
+			// We create a json or jsonpresult that contains an object with a null property
+			var result = new JsonOrJsonpResult { Data = new Foo { } };
+			result.ExecuteResult(controllerContext.Object);
+
+			content.Should().Be(@"{}");
+
+			// Change a setting
+			result.SerializationSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Include;
+			result.ExecuteResult(controllerContext.Object);
+
+			content.Should().Be(@"{""bar"":null}");
+		}
+
+		public class Foo
+		{
+			public string Bar;
 		}
 	}
 }
