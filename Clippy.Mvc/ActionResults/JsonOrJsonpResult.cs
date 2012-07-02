@@ -10,6 +10,15 @@ namespace Clippy.Mvc.ActionResults
 {
 	public class JsonOrJsonpResult : ActionResult
 	{
+		public JsonOrJsonpResult()
+		{
+			SerializationSettings = new JsonSerializerSettings
+			{
+				NullValueHandling = NullValueHandling.Ignore,
+				ContractResolver = new CamelCasePropertyNamesContractResolver()
+			};
+		}
+
 		public override void ExecuteResult(ControllerContext context)
 		{
 			var request = context.HttpContext.Request;
@@ -25,14 +34,7 @@ namespace Clippy.Mvc.ActionResults
 
 			if (this.Data != null)
 			{
-				// Create a SettingsObject
-				var jsonSerializerSettings = new JsonSerializerSettings
-				{
-					NullValueHandling = NullValueHandling.Ignore,
-					ContractResolver = new CamelCasePropertyNamesContractResolver()
-				};
-
-				var json = JsonConvert.SerializeObject(this.Data, Formatting.None, jsonSerializerSettings);
+				var json = JsonConvert.SerializeObject(this.Data, Formatting.None, SerializationSettings);
 				response.Write(json);
 			}
 
@@ -43,5 +45,6 @@ namespace Clippy.Mvc.ActionResults
 		}
 
 		public virtual object Data { get; set; }
+		public virtual JsonSerializerSettings SerializationSettings { get; set; }
 	}
 }
