@@ -143,4 +143,33 @@ public static class StringExtensions
 
 		return s.ToLower();
 	}
+
+	/// <summary>
+	/// Truncates a string to specified length
+	/// </summary>
+	/// <param name="text"></param>
+	/// <param name="maxLength">the total allowed length of the string INCLUDING the suffix</param>
+	/// <param name="cutInWhitespace">whether only cut in whitespace (if possible)</param>
+	/// <param name="suffix">what suffix to use, defaults to '...'</param>
+	/// <returns>the truncated string</returns>
+	public static string Truncate(this string text, int maxLength, bool cutInWhitespace = false, string suffix = "...")
+	{
+		if (string.IsNullOrWhiteSpace(text)) return text;
+		if (text.Length <= maxLength) return text;
+
+		if (suffix.Length >= maxLength)
+			throw new ArgumentException("Your maxLength is less or equal to the length of your suffix. That would look weird!");
+
+		var trunc = text.Substring(0, maxLength - suffix.Length);
+		if (cutInWhitespace)
+		{
+			var lastWhitespace = trunc.LastIndexOf(' ');
+			if (lastWhitespace > 1) 
+			{ 
+				trunc = trunc.Substring(0, lastWhitespace);
+			}
+		}
+
+		return string.Concat(trunc, suffix);
+	}
 }

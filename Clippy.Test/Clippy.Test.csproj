@@ -67,6 +67,7 @@
     <Compile Include="Core\StringExtensions\StripHtml.cs" />
     <Compile Include="Core\StringExtensions\ToFirstUpper.cs" />
     <Compile Include="Core\StringExtensions\ToSlug.cs" />
+    <Compile Include="Core\StringExtensions\Truncate.cs" />
     <Compile Include="Enumerable\LoopingExtensions\Each.cs" />
     <Compile Include="Enumerable\LoopingExtensions\Times.cs" />
     <Compile Include="Enumerable\ValueExtensions\IsNotNullAndHaveItems.cs" />
