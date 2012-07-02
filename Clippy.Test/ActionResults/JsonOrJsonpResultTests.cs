@@ -23,6 +23,9 @@ namespace Clippy.Test.ActionResults
 
 		public JsonOrJsonpResultTests()
 		{
+			content = string.Empty;
+			contentType = string.Empty;
+
 			param = new NameValueCollection();
 			controllerContext = new Mock<ControllerContext>();
 			request = new Mock<HttpRequestBase>();
@@ -30,7 +33,7 @@ namespace Clippy.Test.ActionResults
 
 			request.SetupGet(x => x.Params).Returns(param);
 			response.Setup(x => x.Write(It.IsAny<string>()))
-				.Callback((string s) => content = s);
+				.Callback((string s) => content += s);
 
 			response.SetupSet(x => x.ContentType = It.IsAny<string>()).Callback((string s) => contentType = s);
 
@@ -71,6 +74,8 @@ namespace Clippy.Test.ActionResults
 			result.ExecuteResult(controllerContext.Object);
 
 			content.Should().Be(@"{}");
+			// Clear the content, since we just continue to write in the same context.
+			content = string.Empty;
 
 			// Change a setting
 			result.SerializationSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Include;
