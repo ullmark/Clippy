@@ -12,6 +12,6 @@
 			<dependency id="Newtonsoft.Json" version="4.0.0" />
 		</dependencies>
 		<projectUrl>https://github.com/24hr/clippy</projectUrl>
-		<tags>Extensions</tags>
+		<tags>Extensions Helpers Mvc Gravatar</tags>
 	</metadata>
 </package>

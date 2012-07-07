@@ -33,6 +33,19 @@
     <WarningLevel>4</WarningLevel>
     <BuildPackage>true</BuildPackage>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'nuget|AnyCPU'">
+    <OutputPath>bin\nuget\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+		<BuildPackage>true</BuildPackage>
+		<PushPackage>true</PushPackage>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,7 +63,6 @@
     </Compile>
     <Compile Include="Caching\MemoryCacheExtensions.cs" />
     <Compile Include="Enumerable\LoopingExtensions.cs" />
-    <Compile Include="Enumerable\ValueExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\StringExtensions.cs" />
   </ItemGroup>

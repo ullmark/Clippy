@@ -17,6 +17,7 @@ namespace Clippy.Test.Core.StringExtensions
 			"Fåäö".ToSlug().Should().Be("faao");
 			"Several Words".ToSlug().Should().Be("several-words");
 			"$ell".ToSlug().Should().Be("sell");
+			"Not Suîtable For Å slug".ToSlug().Should().Be("not-suitable-for-a-slug");
 		}
 	}
 }
