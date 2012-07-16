@@ -5,6 +5,8 @@ using System.Text;
 
 public static class UtilExtensions
 {
+	static Random random = new Random();
+
 	public static T Random<T>(this IEnumerable<T> collection)
 	{
 		if (collection == null)
@@ -15,7 +17,6 @@ public static class UtilExtensions
 		if (count == 0)
 			return default(T);
 
-		var random = new Random();
 		var next = random.Next(count);
 
 		return collection.ElementAt(next);
