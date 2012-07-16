@@ -48,7 +48,7 @@
         <!-- Commands -->
         <RestoreCommand>$(NuGetCommand) install "$(PackagesConfig)" -source "$(PackageSources)" -o "$(PackagesDir)"</RestoreCommand>
         <BuildCommand>$(NuGetCommand) pack "$(ProjectPath)" -p Configuration=$(Configuration) -o "$(PackageOutputDir)" -symbols</BuildCommand>
-				<PushCommand>$(NuGetCommand) push "$(PackageOutputDir)$(AssemblyName).$(AssemblyVersion).nupkg"</PushCommand>
+				<PushCommand>$(NuGetCommand) push "$(PackageOutputDir)\$(AssemblyName).$(AssemblyVersion).nupkg"</PushCommand>
 
         <!-- Make the build depend on restore packages -->
         <BuildDependsOn Condition="$(RestorePackages) == 'true'">
