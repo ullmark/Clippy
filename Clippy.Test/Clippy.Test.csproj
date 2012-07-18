@@ -81,6 +81,7 @@
     <Compile Include="Core\StringExtensions\Truncate.cs" />
     <Compile Include="Enumerable\LoopingExtensions\Each.cs" />
     <Compile Include="Enumerable\LoopingExtensions\Times.cs" />
+    <Compile Include="Enumerable\UtilExtensions\Random.cs" />
     <Compile Include="Mvc\Helpers\AHtmlHelperTest.cs" />
     <Compile Include="Mvc\Helpers\GravatarHelpers\Gravatar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
