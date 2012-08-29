@@ -63,6 +63,7 @@
     <Compile Include="Core\StringExtensions\HtmlDecode.cs" />
     <Compile Include="Core\StringExtensions\IsNullOrWhiteSpace.cs" />
     <Compile Include="Core\StringExtensions\IsValidUrl.cs" />
+    <Compile Include="Core\StringExtensions\TryParseTokenSeparatedString.cs" />
     <Compile Include="Core\StringExtensions\Reverse.cs" />
     <Compile Include="Core\StringExtensions\StripHtml.cs" />
     <Compile Include="Core\StringExtensions\ToFirstUpper.cs" />
