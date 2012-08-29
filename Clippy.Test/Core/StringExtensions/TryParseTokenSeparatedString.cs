@@ -42,6 +42,16 @@ namespace Clippy.Test.Core.StringExtensions
 			success.Should().BeFalse();
 		}
 
+        [Fact]
+        public void It_returns_parsed_values_up_until_a_bad_value()
+        {
+            var values = "42,23,foo,37";
+            IEnumerable<int> result;
+
+            values.TryParseTokenSeparatedValues<int>(out result);
+            result.Should().ContainInOrder(new [] {42, 23});
+        }
+
 		[Fact]
 		public void It_can_parse_longs()
 		{
