@@ -172,4 +172,36 @@ public static class StringExtensions
 
 		return string.Concat(trunc, suffix);
 	}
+
+	/// <summary>
+	/// Tries to split the string with the provided token and change 
+	/// the type of the values to the type provided in <typeparamref name="T"/>
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="tokenString"></param>
+	/// <param name="result"></param>
+	/// <returns></returns>
+	public static bool TryParseTokenSeparatedValues<T>(this string tokenString, out IEnumerable<T> result, string token = ",")
+	{
+		// Create a list to store the values.
+		var parsedValues = new List<T>();
+		// and set it to be the out list.
+		result = parsedValues;
+
+		try
+		{
+			tokenString.Split(token.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+				.Each((value) => 
+				{
+					T parsedValue = (T)Convert.ChangeType(value.Trim(), typeof(T));
+					parsedValues.Add(parsedValue);
+				});
+		}
+
+		// Catch all parse errors since this is a "Try Parse" method
+		catch { return false; }
+
+		// All parsing was successfull, return true.
+		return true;
+	}
 }
