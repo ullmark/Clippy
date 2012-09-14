@@ -8,4 +8,3 @@
     \___/      \_____________________/
 
 # Clippy is a collection of extension methods for Microsoft .NET
-Look in the [wiki](https://github.com/24hr/Clippy/wiki) for more information.
