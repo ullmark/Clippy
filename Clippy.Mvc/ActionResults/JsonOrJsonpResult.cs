@@ -17,6 +17,8 @@ namespace Clippy.Mvc.ActionResults
 				NullValueHandling = NullValueHandling.Ignore,
 				ContractResolver = new CamelCasePropertyNamesContractResolver()
 			};
+
+			JsonSerializerFunc = () => JsonConvert.SerializeObject(this.Data, Formatting.None, SerializationSettings);
 		}
 
 		public override void ExecuteResult(ControllerContext context)
@@ -32,11 +34,8 @@ namespace Clippy.Mvc.ActionResults
 				response.Write(string.Concat(callback, "("));
 			}
 
-			if (this.Data != null)
-			{
-				var json = JsonConvert.SerializeObject(this.Data, Formatting.None, SerializationSettings);
-				response.Write(json);
-			}
+			var json = JsonSerializerFunc();
+			response.Write(json);
 
 			if (!string.IsNullOrWhiteSpace(callback))
 			{
@@ -44,7 +43,21 @@ namespace Clippy.Mvc.ActionResults
 			}	
 		}
 
+		/// <summary>
+		/// Gets or sets the function that produces the json string that are written
+		/// to the response. Set this if you want to control the serialization process 
+		/// entirely.
+		/// </summary>
+		public virtual Func<string> JsonSerializerFunc { get; set; }
+
+		/// <summary>
+		/// Gets or sets the Data to be rendered
+		/// </summary>
 		public virtual object Data { get; set; }
+
+		/// <summary>
+		/// Gets or sets the Serialization Settings
+		/// </summary>
 		public virtual JsonSerializerSettings SerializationSettings { get; set; }
 	}
 }
