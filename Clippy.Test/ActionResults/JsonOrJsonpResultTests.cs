@@ -84,6 +84,16 @@ namespace Clippy.Test.ActionResults
 			content.Should().Be(@"{""bar"":null}");
 		}
 
+		[Fact]
+		public void It_allows_changing_json_serialization_entirely()
+		{
+			var result = new JsonOrJsonpResult();
+			result.JsonSerializerFunc = () => @"{""lol"":""indeed"" }";
+			result.ExecuteResult(controllerContext.Object);
+
+			content.Should().Be(@"{""lol"":""indeed"" }");
+		}
+
 		public class Foo
 		{
 			public string Bar;
