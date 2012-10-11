@@ -13,6 +13,6 @@
 			<frameworkAssembly assemblyName="System.Runtime.Caching" />
 		</frameworkAssemblies>
     <projectUrl>https://github.com/24hr/clippy</projectUrl>
-    <tags>Extensions</tags>
+    <tags>Extensions Utility</tags>
   </metadata>
 </package>

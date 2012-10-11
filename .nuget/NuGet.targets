@@ -16,11 +16,15 @@
 
         <!-- Property that enables building a package from a project -->
         <BuildPackage Condition="$(BuildPackage) == ''">false</BuildPackage>
+			
+				<!-- Property that enables pushing a package to nuget -->
+				<PushPackage Condition="$(PushPackage) == ''">false</PushPackage>
 
         <!-- Commands -->
         <RestoreCommand>"$(NuGetExePath)" install "$(PackagesConfig)" -source $(PackageSources) -o "$(PackagesDir)"</RestoreCommand>
         <BuildCommand>"$(NuGetExePath)" pack "$(ProjectPath)" -p Configuration=$(Configuration) -o "$(PackageOutputDir)" -symbols</BuildCommand>
-
+				<PushCommand>"$(NuGetExePath) push "$(PackageOutputDir)\$(AssemblyName).%(OutputAssemblyInfo.Version).nupkg"</PushCommand>
+			
         <!-- Make the build depend on restore packages -->
         <BuildDependsOn Condition="$(RestorePackages) == 'true'">
             RestorePackages;
@@ -32,6 +36,11 @@
             $(BuildDependsOn);
             BuildPackage;
         </BuildDependsOn>
+
+				<BuildDependsOn Condition="$(PushPackage) == 'true'">
+					$(BuildDependsOn);
+					PushPackage;
+				</BuildDependsOn>
     </PropertyGroup>
     
     <Target Name="CheckPrerequisites">
@@ -49,4 +58,9 @@
         <Exec Command="$(BuildCommand)"
               LogStandardErrorAsError="true" />
     </Target>
+
+		<Target Name="PushPackage" DependsOnTargets="CheckPrerequisites">
+			<Exec Command="$(PushCommand)"
+						LogStandardErrorAsError="true" />
+		</Target>
 </Project>
