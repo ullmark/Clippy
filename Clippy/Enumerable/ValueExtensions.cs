@@ -26,6 +26,7 @@ public static class ValueExtensions
     /// <summary>
     /// Checks if the Enumerable contains duplicates
     /// </summary>
+    /// <remarks>Code borrowed from "http://www.geekality.net/2010/01/19/how-to-check-for-duplicates/"</remarks>
     /// <typeparam name="T"></typeparam>
     /// <param name="subjects"></param>
     /// <param name="comparer"></param>
