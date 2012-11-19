@@ -20,16 +20,34 @@ public static class FileSize
 	public const decimal PB = TB * 1000M;
 	public const decimal EB = PB * 1000M;
 
+	/// <summary>
+	/// Returns a string formatted to represent a file size 
+	/// using multiplication of 1024 as power
+	/// </summary>
+	/// <param name="length"></param>
+	/// <returns></returns>
 	public static string ToKibiFileSize(this long length, string numberFormat = "0.##", IFormatProvider formatProvider = null)
 	{
 		return ToKibiFileSize((ulong)length, numberFormat, formatProvider);
 	}
 
+	/// <summary>
+	/// Returns a string formatted to represent a file size 
+	/// using multiplication of 1024 as power
+	/// </summary>
+	/// <param name="length"></param>
+	/// <returns></returns>
 	public static string ToKibiFileSize(this int length, string numberFormat = "0.##", IFormatProvider formatProvider = null)
 	{
 		return ToKibiFileSize((ulong)length, numberFormat, formatProvider);
 	}
 
+	/// <summary>
+	/// Returns a string formatted to represent a file size 
+	/// using multiplication of 1024 as power
+	/// </summary>
+	/// <param name="length"></param>
+	/// <returns></returns>
 	public static string ToKibiFileSize(this uint length, string numberFormat = "0.##", IFormatProvider formatProvider = null)
 	{
 		return ToKibiFileSize((ulong)length, numberFormat, formatProvider);
@@ -86,16 +104,34 @@ public static class FileSize
 		return string.Concat(number.ToString(numberFormat, formatProvider), " ", suffix);
 	}
 
+	/// <summary>
+	/// Returns a string formatted to represent file size 
+	/// using multiplication of 1000 as power.
+	/// </summary>
+	/// <param name="length"></param>
+	/// <returns></returns>
 	public static string ToKiloFileSize(this long length, string numberFormat = "0.##", IFormatProvider formatProvider = null)
 	{
 		return ToKiloFileSize((ulong)length, numberFormat, formatProvider);
 	}
 
+	/// <summary>
+	/// Returns a string formatted to represent file size 
+	/// using multiplication of 1000 as power.
+	/// </summary>
+	/// <param name="length"></param>
+	/// <returns></returns>
 	public static string ToKiloFileSize(this uint length, string numberFormat = "0.##", IFormatProvider formatProvider = null)
 	{
 		return ToKiloFileSize((ulong)length, numberFormat, formatProvider);
 	}
 
+	/// <summary>
+	/// Returns a string formatted to represent file size 
+	/// using multiplication of 1000 as power.
+	/// </summary>
+	/// <param name="length"></param>
+	/// <returns></returns>
 	public static string ToKiloFileSize(this int length, string numberFormat = "0.##", IFormatProvider formatProvider = null)
 	{
 		return ToKiloFileSize((ulong)length, numberFormat, formatProvider);
@@ -103,7 +139,7 @@ public static class FileSize
 
 	/// <summary>
 	/// Returns a string formatted to represent file size 
-	/// using multiplication of 1024 as power.
+	/// using multiplication of 1000 as power.
 	/// </summary>
 	/// <param name="length"></param>
 	/// <returns></returns>
