@@ -52,6 +52,7 @@
     <Compile Include="Enumerable\LoopingExtensions.cs" />
     <Compile Include="Enumerable\UtilExtensions.cs" />
     <Compile Include="Enumerable\ValueExtensions.cs" />
+    <Compile Include="Formatting\FileSize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\StringExtensions.cs" />
   </ItemGroup>

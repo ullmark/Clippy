@@ -74,6 +74,7 @@
     <Compile Include="Enumerable\UtilExtensions\Random.cs" />
     <Compile Include="Enumerable\ValueExtensions\HasDuplicates.cs" />
     <Compile Include="Enumerable\ValueExtensions\IsNotNullAndHaveItems.cs" />
+    <Compile Include="Formatting\FileSize\ToFileSize.cs" />
     <Compile Include="Mvc\Helpers\AHtmlHelperTest.cs" />
     <Compile Include="Mvc\Helpers\GravatarHelpers\Gravatar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
