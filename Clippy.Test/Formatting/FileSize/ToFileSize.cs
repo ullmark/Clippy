@@ -5,6 +5,8 @@ using System.Text;
 using Xunit;
 using FluentAssertions;
 using System.Threading;
+using System.Reflection;
+using System.IO;
 
 namespace Clippy.Test.Formatting.FileSize
 {
@@ -31,6 +33,16 @@ namespace Clippy.Test.Formatting.FileSize
 			2042.ToKibiFileSize().Should().Be("1,99 KiB");
 			2000000.ToKibiFileSize().Should().Be("1,91 MiB");
 			2199023255552.ToKibiFileSize().Should().Be("2 TiB");
+		}
+
+		[Fact]
+		void it_workes_for_fileinfo()
+		{
+			var bin = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase).Substring(6);
+			var file = new FileInfo(Path.Combine(bin, "TestAssets\\Koala.jpg"));
+
+			file.KibiFileSize().Should().Be("762,53 KiB");
+			file.KiloFileSize().Should().Be("780,83 kB");
 		}
 
 		[Fact]

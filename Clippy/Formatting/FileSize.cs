@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Globalization;
+using System.IO;
 
 public static class FileSize
 {
@@ -24,6 +25,7 @@ public static class FileSize
 	/// Returns a string formatted to represent a file size 
 	/// using multiplication of 1024 as power
 	/// </summary>
+	/// <remarks>http://en.wikipedia.org/wiki/Kibibyte</remarks>
 	/// <param name="length"></param>
 	/// <returns></returns>
 	public static string ToKibiFileSize(this long length, string numberFormat = "0.##", IFormatProvider formatProvider = null)
@@ -35,6 +37,7 @@ public static class FileSize
 	/// Returns a string formatted to represent a file size 
 	/// using multiplication of 1024 as power
 	/// </summary>
+	/// <remarks>http://en.wikipedia.org/wiki/Kibibyte</remarks>
 	/// <param name="length"></param>
 	/// <returns></returns>
 	public static string ToKibiFileSize(this int length, string numberFormat = "0.##", IFormatProvider formatProvider = null)
@@ -46,6 +49,7 @@ public static class FileSize
 	/// Returns a string formatted to represent a file size 
 	/// using multiplication of 1024 as power
 	/// </summary>
+	/// <remarks>http://en.wikipedia.org/wiki/Kibibyte</remarks>
 	/// <param name="length"></param>
 	/// <returns></returns>
 	public static string ToKibiFileSize(this uint length, string numberFormat = "0.##", IFormatProvider formatProvider = null)
@@ -57,6 +61,7 @@ public static class FileSize
 	/// Returns a string formatted to represent a file size 
 	/// using multiplication of 1024 as power
 	/// </summary>
+	/// <remarks>http://en.wikipedia.org/wiki/Kibibyte</remarks>
 	/// <param name="length"></param>
 	/// <returns></returns>
 	public static string ToKibiFileSize(this ulong length, string numberFormat = "0.00", IFormatProvider formatProvider = null)
@@ -108,6 +113,7 @@ public static class FileSize
 	/// Returns a string formatted to represent file size 
 	/// using multiplication of 1000 as power.
 	/// </summary>
+	/// <remarks>http://en.wikipedia.org/wiki/Kilobyte</remarks>
 	/// <param name="length"></param>
 	/// <returns></returns>
 	public static string ToKiloFileSize(this long length, string numberFormat = "0.##", IFormatProvider formatProvider = null)
@@ -119,6 +125,7 @@ public static class FileSize
 	/// Returns a string formatted to represent file size 
 	/// using multiplication of 1000 as power.
 	/// </summary>
+	/// <remarks>http://en.wikipedia.org/wiki/Kilobyte</remarks>
 	/// <param name="length"></param>
 	/// <returns></returns>
 	public static string ToKiloFileSize(this uint length, string numberFormat = "0.##", IFormatProvider formatProvider = null)
@@ -130,6 +137,7 @@ public static class FileSize
 	/// Returns a string formatted to represent file size 
 	/// using multiplication of 1000 as power.
 	/// </summary>
+	/// <remarks>http://en.wikipedia.org/wiki/Kilobyte</remarks>
 	/// <param name="length"></param>
 	/// <returns></returns>
 	public static string ToKiloFileSize(this int length, string numberFormat = "0.##", IFormatProvider formatProvider = null)
@@ -141,6 +149,7 @@ public static class FileSize
 	/// Returns a string formatted to represent file size 
 	/// using multiplication of 1000 as power.
 	/// </summary>
+	/// <remarks>http://en.wikipedia.org/wiki/Kilobyte</remarks>
 	/// <param name="length"></param>
 	/// <returns></returns>
 	public static string ToKiloFileSize(this ulong length, string numberFormat = "0.##", IFormatProvider formatProvider = null)
@@ -186,5 +195,44 @@ public static class FileSize
 		}
 
 		return string.Concat(number.ToString(numberFormat, formatProvider), " ", suffix);
+	}
+
+	private static void ValidateFileInfo(FileInfo file)
+	{
+		if (file == null)
+			throw new ArgumentNullException("file");
+
+		if (!file.Exists)
+			throw new FileNotFoundException();
+	}
+
+	/// <summary>
+	/// Returns a formatted string representing the file size in a human readable 
+	/// format using 1024 as power.
+	/// <remarks>http://en.wikipedia.org/wiki/Kibibyte</remarks>
+	/// </summary>
+	/// <param name="file"></param>
+	/// <param name="numberFormat"></param>
+	/// <param name="format"></param>
+	/// <returns></returns>
+	public static string KibiFileSize(this FileInfo file, string numberFormat = "0.##", IFormatProvider format = null)
+	{
+		ValidateFileInfo(file);
+		return file.Length.ToKibiFileSize(numberFormat, format);
+	}
+
+	/// <summary>
+	/// Returns a formatted string representing the file size in a human readable
+	/// format using 1000 as power.
+	/// </summary>
+	/// <remarks>http://en.wikipedia.org/wiki/Kilobyte</remarks>
+	/// <param name="file"></param>
+	/// <param name="numberFormat"></param>
+	/// <param name="format"></param>
+	/// <returns></returns>
+	public static string KiloFileSize(this FileInfo file, string numberFormat = "0.##", IFormatProvider format = null)
+	{
+		ValidateFileInfo(file);
+		return file.Length.ToKiloFileSize(numberFormat, format);
 	}
 }
